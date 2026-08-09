@@ -14,7 +14,9 @@
     "@babel/parser": "^7.x",
     "@babel/traverse": "^7.x",
     "chalk": "^4.1.2",
+    "cli-table3": "^0.6.5",
     "commander": "^11.x",
+    "ora": "^5.4.1",
     "source-map-js": "^1.x"
   },
   "devDependencies": {

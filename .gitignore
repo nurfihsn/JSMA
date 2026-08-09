@@ -11,6 +11,8 @@ reconstructed/
 report.json
 dummy.map
 *.log
+endpoint-js.txt
+react-dummy.map
 
 # Environment variables
 .env

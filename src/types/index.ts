@@ -7,6 +7,8 @@ export interface Finding {
     line: number;
     evidence: string;
     title: string;
+    occurrences?: number;
+    otherLocations?: string[];
 }
 
 export interface ExtractedFile {

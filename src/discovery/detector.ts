@@ -1,8 +1,11 @@
 export async function findAndDownloadSourceMap(jsUrl: string, customHeaders: Record<string, string> = {}): Promise<string> {
-    console.log(`[i] Fetching target: ${jsUrl}`);
 
     const headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) JS-SourceMap-Archaeologist/0.1',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache',
         ...customHeaders
     };
 
@@ -21,17 +24,13 @@ export async function findAndDownloadSourceMap(jsUrl: string, customHeaders: Rec
         const mapReference = match[1];
 
         if (mapReference.startsWith('data:application/json;base64,')) {
-            console.log(`[+] Found Inline Base64 Source Map!`);
             const base64Data = mapReference.replace('data:application/json;base64,', '');
             return Buffer.from(base64Data, 'base64').toString('utf-8');
         }
 
         const mapUrl = new URL(mapReference, jsUrl).href;
-        console.log(`[+] Found Source Map reference: ${mapUrl}`);
         return downloadMap(mapUrl, headers);
     }
-
-    console.log(`[!] No sourceMappingURL found in file. Trying smart fallbacks...`);
 
     const fallbackUrls = [
         jsUrl + '.map',
@@ -44,7 +43,6 @@ export async function findAndDownloadSourceMap(jsUrl: string, customHeaders: Rec
 
     for (const url of uniqueFallbacks) {
         if (url === jsUrl) continue;
-        console.log(`[i] Trying fallback: ${url}`);
         try {
             return await downloadMap(url, headers);
         } catch (e) {
