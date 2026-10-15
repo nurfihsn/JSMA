@@ -5,19 +5,35 @@ package-lock.json
 # Build output
 dist/
 
-# Test atau Output files
-output_*/
+# Local Output & Reports
 reconstructed/
-report.json
-dummy.map
+dump_*/
+*.json
+!package.json
+!tsconfig.json
+*.html
 *.log
 endpoint-js.txt
 react-dummy.map
+report.json
+dummy.map
+
+# Testing & Coverage
+coverage/
+.jest-cache/
 
 # Environment variables
 .env
 .env.local
 
-# OS generated files
+# Editor & OS files
+.vscode/
+.idea/
 .DS_Store
 Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+jsma-error.log

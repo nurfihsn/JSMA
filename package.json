@@ -1,6 +1,6 @@
 {
-  "name": "js-source-map-archaeologist",
-  "version": "0.1.0",
+  "name": "JSMA",
+  "version": "1.0.0-Elite",
   "description": "Security Intelligence from Source Maps",
   "main": "dist/index.js",
   "bin": {
@@ -8,7 +8,8 @@
   },
   "scripts": {
     "scan": "tsx src/cli/index.ts",
-    "build": "tsup src/cli/index.ts --format cjs --clean"
+    "build": "tsup src/cli/index.ts --format cjs --clean",
+    "test": "jest"
   },
   "dependencies": {
     "@babel/parser": "^7.x",
@@ -17,11 +18,15 @@
     "cli-table3": "^0.6.5",
     "commander": "^11.x",
     "ora": "^5.4.1",
-    "source-map-js": "^1.x"
+    "source-map-js": "^1.x",
+    "undici": "^8.12.2"
   },
   "devDependencies": {
     "@types/babel__traverse": "^7.x",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20.x",
+    "jest": "^30.5.2",
+    "ts-jest": "^29.4.15",
     "tsup": "^8.x",
     "tsx": "^4.x",
     "typescript": "^5.x"
